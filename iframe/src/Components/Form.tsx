@@ -42,7 +42,6 @@ const Form = () => {
 
   const submitHandler = () => {
     const formFields = formRef.current?.querySelectorAll("input, select") || [];
-    
     for (let i = 0; i < formFields.length; i++) {
       if (!formFields[i].checkValidity()) {
         const fieldValidator = validationRules.find((rule) => rule.field === formFields[i].name);
@@ -54,7 +53,7 @@ const Form = () => {
   };
 
   const handleMessage = (event: MessageEvent) => {
-    if (event.origin !== "http://localhost:3001") return;
+    if (event.origin !== "https://task-blush.vercel.app") return;
     setValidationRules(event.data as ValidationRules[]);
   };
 
@@ -89,7 +88,6 @@ const Form = () => {
         <input
           {...applyValidators("contact")}
           className={styles.form_field}
-          type="text"
           name="contact"
         />
       </div>

@@ -24,13 +24,12 @@ function App() {
   }
 
   const handleMessage = (event: MessageEvent) => {
-    if (event.origin !== 'http://localhost:3000') return;
+    //only accepts message from mentioned url
+    if (event.origin !== 'https://task-qokv.vercel.app') return;
     setFormResponse(event.data as string)
   }
   useEffect(() => {
-
     window.addEventListener("message", handleMessage);
-
     return () => {
       window.removeEventListener("message", handleMessage);
     };
@@ -41,7 +40,7 @@ function App() {
       <iframe
         ref={iframeRef}
         title="formIframe"
-        src="http://localhost:3000/"
+        src="https://task-qokv.vercel.app/"
         height="500px"
         onLoad={postValidationRules}
       />
